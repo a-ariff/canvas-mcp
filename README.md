@@ -81,6 +81,8 @@ graph TB
 
 Go to `Canvas → Account → Settings → Approved Integrations → New Access Token`
 
+> **📖 Never done this before?** Follow the [step-by-step guide with screenshots](docs/CANVAS_API_GUIDE.md)
+
 ### 2. Clone and build
 
 ```bash
