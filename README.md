@@ -11,15 +11,61 @@ A local MCP (Model Context Protocol) server for Canvas LMS. Query your courses, 
 
 ## Architecture
 
+```mermaid
+graph TB
+    subgraph "MCP Clients"
+        Claude["Claude Desktop"]
+        Cursor["Cursor / VS Code"]
+        Other["Other MCP Clients"]
+    end
+
+    subgraph "Your Machine (Local)"
+        Server["Canvas MCP Server<br/>Node.js + TypeScript"]
+        ENV["Environment Variables<br/>CANVAS_API_KEY"]
+    end
+
+    subgraph "Canvas LMS Tools"
+        Courses["list_courses"]
+        Assignments["get_assignments<br/>get_upcoming_assignments"]
+        Grades["get_grades<br/>get_submission_status"]
+        Content["get_modules<br/>get_announcements<br/>get_discussions"]
+        Calendar["get_calendar_events<br/>get_todo_items<br/>get_quizzes"]
+        Profile["get_user_profile"]
+    end
+
+    subgraph "Canvas Instance"
+        API["Canvas REST API<br/>HTTPS Only"]
+    end
+
+    Claude -->|stdio| Server
+    Cursor -->|stdio| Server
+    Other -->|stdio| Server
+
+    ENV -.->|read at startup| Server
+
+    Server --> Courses
+    Server --> Assignments
+    Server --> Grades
+    Server --> Content
+    Server --> Calendar
+    Server --> Profile
+
+    Courses --> API
+    Assignments --> API
+    Grades --> API
+    Content --> API
+    Calendar --> API
+    Profile --> API
+
+    style Server fill:#4CAF50,stroke:#333,color:#fff
+    style ENV fill:#FF9800,stroke:#333,color:#fff
+    style API fill:#2196F3,stroke:#333,color:#fff
+    style Claude fill:#7C4DFF,stroke:#333,color:#fff
+    style Cursor fill:#7C4DFF,stroke:#333,color:#fff
+    style Other fill:#7C4DFF,stroke:#333,color:#fff
 ```
-┌─────────────────┐     stdio      ┌──────────────┐    HTTPS    ┌──────────────┐
-│   MCP Client    │◄──────────────►│  Canvas MCP  │◄──────────►│  Canvas LMS  │
-│ (Claude, Cursor │                │   (local)    │            │  REST API    │
-│  VS Code, etc.) │                └──────────────┘            └──────────────┘
-└─────────────────┘                       │
-                                    API key stays
-                                    on your machine
-```
+
+> **🔒 Privacy by design** — your API key is read from local environment variables and sent only to your Canvas instance over HTTPS. No intermediary servers, no third-party storage.
 
 ## Features
 
