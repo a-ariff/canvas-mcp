@@ -1,0 +1,31 @@
+{
+  "name": "canvas-mcp",
+  "version": "1.0.0",
+  "description": "Canvas LMS MCP server - query courses, assignments, grades and more",
+  "type": "module",
+  "main": "dist/standalone.js",
+  "bin": {
+    "canvas-mcp": "dist/standalone.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/standalone.js",
+    "dev": "tsc && node dist/standalone.js"
+  },
+  "keywords": [
+    "mcp",
+    "canvas",
+    "lms",
+    "education"
+  ],
+  "author": "a-ariff",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.3"
+  }
+}
