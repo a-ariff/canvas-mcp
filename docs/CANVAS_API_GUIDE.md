@@ -12,7 +12,7 @@ A step-by-step guide to generating a personal access token for Canvas LMS.
 
 ### Step 1: Open Canvas and go to Settings
 
-1. Go to your Canvas website (e.g. `https://learn.mywhitecliffe.com`)
+1. Go to your Canvas website (e.g. `https://canvas.your-university.edu`)
 2. Log in with your student account
 3. Click on your **profile picture** (or initials) in the top-left sidebar
 4. Click **Settings**
@@ -116,7 +116,7 @@ Now you have your token! Add it to your MCP client config:
 
 Replace:
 - `paste-your-token-here` → the token you just copied
-- `https://your-canvas-url.edu` → your Canvas website URL (e.g. `https://learn.mywhitecliffe.com`)
+- `https://your-canvas-url.edu` → your Canvas website URL (e.g. `https://canvas.your-university.edu`)
 
 ---
 
@@ -146,7 +146,7 @@ graph TD
 ### "What's my Canvas URL?"
 
 It's the website you use to check your courses. For example:
-- Whitecliffe: `https://learn.mywhitecliffe.com`
+- Your university: `https://canvas.your-university.edu`
 - Generic Canvas: `https://canvas.instructure.com`
 - Your university might have a custom URL — check with your IT department
 

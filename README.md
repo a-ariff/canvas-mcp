@@ -142,7 +142,7 @@ Ask your AI assistant things like:
 
 - "What courses am I enrolled in?"
 - "What assignments are due this week?"
-- "Show me my grades for IT8107"
+- "Show me my grades for Computer Science 101"
 - "Are there any new announcements?"
 
 ## Tools
